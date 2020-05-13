@@ -8,6 +8,8 @@ import Home from "./Home";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
 import ConfigurationInfo from "./ConfigurationInfo";
+import ConfigsComparison from "./ConfigsComparison";
+import BestConfigs from "./BestConfigs";
  
 class Main extends Component {
   render() {
@@ -27,6 +29,8 @@ class Main extends Component {
                 <Route path="/procedures" component={Stuff}/>
                 <Route path="/contact" component={Contact}/>
                 <Route path="/config-description"  render ={(props) => <ConfigurationInfo {...props} text={'true'} />}/>
+                <Route path="/configs-comparison"  render ={(props) => <ConfigsComparison {...props} text={'true'} />}/>
+                <Route path="/configs-search"  render ={(props) => <BestConfigs {...props} text={'true'} />}/>
                 {/* <Route component={Error} /> */}
                 </div>
                 </div>

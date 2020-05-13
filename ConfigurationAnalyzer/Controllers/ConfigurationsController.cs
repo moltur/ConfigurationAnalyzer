@@ -29,7 +29,7 @@ namespace ConfigurationAnalyzer.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public ActionResult<Configuration> Get(long id)
+		public ActionResult<ConfigurationRunPropertiesProcessed> Get(long id)
 		{
 			return Ok(_configurationsService.GetConfiguration(id));
 		}

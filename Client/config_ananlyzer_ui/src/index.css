@@ -1,10 +1,10 @@
 body {
-  background-color: rgb(174, 216, 243);
+  background-color: rgb(179, 187, 192);
   padding: 20px;
   margin: 0;
 }
 h1 {
-  color: rgb(31, 72, 100);
+  color: rgb(88, 92, 95);
   font-family: sans-serif;
 }
 h2, p, ul, li, p {
@@ -16,7 +16,7 @@ ul.header li {
   margin: 0;
 }
 ul.header {
-  background-color: rgb(54, 162, 235);
+  background-color: rgb(131, 139, 145);
   padding: 0;
 }
 ul.header li a {

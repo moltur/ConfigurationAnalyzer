@@ -10,7 +10,6 @@ import SortedBar from './Bars/SortedBar';
 class ConfigurationInfo extends Component { 
   constructor(props) {
     super(props);
-    // this.handleChange = this.handleChange.bind(this);
     this.state = {
       config: {
         id: 0,
