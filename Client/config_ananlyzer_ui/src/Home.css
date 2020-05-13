@@ -2,9 +2,10 @@ h1, h2, h3, h4, p, ul, li, p {
     font-family: sans-serif;
   }
 
-  canvas{
+  .btn.btn-squared {
+  margin: 10px;
+}
 
-    width:700px !important;
-    height:500px !important;
-  
-  }
+.btn-outline-primary:not(:disabled):not(.disabled).active{
+  background-color: transparent;
+}

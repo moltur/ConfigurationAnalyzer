@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import API from './Api';
-import { FormCheckbox } from "shards-react";
+import { FormCheckbox, Button, Container, Row, Col  } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import "./Home.css";
 import { Route, Link, HashRouter } from "react-router-dom";
-import ConfigurationInfo from "./ConfigurationInfo";
-import Stuff from "./Stuff";
  
 class Home extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      configurations: []
+      configurations: [],
+      isComparisonAllowed: false,
+      isSearchAllowed: false
     };
   }
 
@@ -24,6 +24,25 @@ class Home extends Component {
         break;
       }
     }
+
+    var enabledCount = 0;
+    for(var i in this.state.configurations){
+    if(this.state.configurations[i].isChecked === true)
+      enabledCount++;
+    }
+
+    if (enabledCount > 1){
+      this.state.isSearchAllowed = true;
+     if(enabledCount < 3){
+      this.state.isComparisonAllowed = true;
+    } else{
+      this.state.isComparisonAllowed = false;
+    }
+  } else {
+    this.state.isComparisonAllowed = false;
+    this.state.isSearchAllowed = false;
+  }
+    
     this.setState(this.state);
   }
 
@@ -51,16 +70,65 @@ class Home extends Component {
     }))
   }
 
+  getComparisonButton(){
+      if (this.state.isComparisonAllowed)
+      {
+        return <Button outline squared active>
+       <Link to='/configs-comparison'>
+         Сравнить
+         </Link>
+      </Button>
+      }
+      else{
+        return <Button outline squared disabled>
+          Сравнить
+       </Button>
+      } 
+  }
+
+  getSearchButton(){
+      if (this.state.isSearchAllowed)
+      {
+        return <Button outline squared active>
+       <Link to='/configs-search'>
+         Выбрать оптимальную
+       </Link>
+      </Button>
+      }
+      else{
+        return <Button outline squared disabled>
+          Выбрать оптимальную
+       </Button>
+      } 
+  }
+
 
   render() {
     return (
-      <HashRouter>
-      <div>
+      <Container>
+        <Row>
+          <Col>
         <h4>Доступные конфигурации:</h4>
+        </Col>
+        <Col></Col>
+        <Col></Col>
+        </Row>
+        <Row>
+        <Col>
         {this.getList()}
-        <Route path="/config-description" component={Stuff} />
-      </div>
-      </HashRouter>
+        </Col>
+        <Col></Col>
+        <Col></Col>
+        </Row>
+        <Row>
+        <Col></Col>
+        <Col></Col>
+        <Col>
+        {this.getComparisonButton()}
+        {this.getSearchButton()}
+        </Col>
+        </Row>
+      </Container>
     );
   }
 }
