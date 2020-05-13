@@ -7,6 +7,6 @@ namespace ConfigurationAnalyzer.Domain.Interfaces
 	{
 		IEnumerable<Configuration> GetAllConfigurations();
 
-		ConfigurationRunProperties GetConfiguration(long Id);
+		ConfigurationRunPropertiesProcessed GetConfiguration(long id);
 	}
 }

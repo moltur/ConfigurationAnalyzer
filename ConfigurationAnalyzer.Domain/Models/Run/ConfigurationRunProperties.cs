@@ -14,8 +14,8 @@ namespace ConfigurationAnalyzer.Domain.Models
 
 		public double InefficiencyTime { get; set; }
 
-		public IDictionary<long, ProcedureRunProperties> Procedures { get; set; }
+		public IEnumerable<ProcedureRunProperties> Procedures { get; set; }
 
-		public IDictionary<long, ResourceRunProperties> Resources { get; set; }
+		public IEnumerable<ResourceRunProperties> Resources { get; set; }
 	}
 }

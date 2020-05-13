@@ -4,8 +4,9 @@ import { FormCheckbox } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import "./Home.css";
-import { Route, NavLink, HashRouter } from "react-router-dom";
+import { Route, Link, HashRouter } from "react-router-dom";
 import ConfigurationInfo from "./ConfigurationInfo";
+import Stuff from "./Stuff";
  
 class Home extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class Home extends Component {
       checked={value.isChecked}
       onChange={e => this.handleChange(e, value.id)}
     >
-      <NavLink to = {link}>{value.name}</NavLink>
+      <Link to={link}>{value.name}</Link>
     </FormCheckbox>
     })
   }
@@ -50,9 +51,6 @@ class Home extends Component {
     }))
   }
 
-  getConfigurationInfo(){
-    return <ConfigurationInfo text = {'LOLKEK'}/>;
-  }
 
   render() {
     return (
@@ -60,7 +58,7 @@ class Home extends Component {
       <div>
         <h4>Доступные конфигурации:</h4>
         {this.getList()}
-        <Route path="/config-description" component = {ConfigurationInfo}/>
+        <Route path="/config-description" component={Stuff} />
       </div>
       </HashRouter>
     );

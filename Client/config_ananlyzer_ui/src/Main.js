@@ -7,6 +7,7 @@ import {
 import Home from "./Home";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
+import ConfigurationInfo from "./ConfigurationInfo";
  
 class Main extends Component {
   render() {
@@ -25,6 +26,8 @@ class Main extends Component {
                 <Route path="/resources" component={Stuff}/>
                 <Route path="/procedures" component={Stuff}/>
                 <Route path="/contact" component={Contact}/>
+                <Route path="/config-description"  render ={(props) => <ConfigurationInfo {...props} text={'true'} />}/>
+                {/* <Route component={Error} /> */}
                 </div>
                 </div>
         </HashRouter>

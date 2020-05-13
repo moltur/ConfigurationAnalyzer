@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import "./Home.css";
  
 class Contact extends Component {
   render() {
     return (
       <div>
-        <h2>GOT QUESTIONS?</h2>
-        <p>The easiest thing to do is post on
-        our <a href="http://forum.kirupa.com">forums</a>.
-        </p>
+        <h4>Есть вопросы?</h4>
+        <p></p>
+        <p>Свяжитесь с нами круглосуточно в чате: <a href="http://our_super_support.com">поддержка</a>.</p>
+        <p>Или по телефону: <a>+7 000 0000000</a></p>
       </div>
     );
   }
