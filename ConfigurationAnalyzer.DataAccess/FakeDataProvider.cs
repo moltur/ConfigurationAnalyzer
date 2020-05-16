@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace ConfigurationAnalyzer.DataAccess
 {
-	public class FakeDataProvider: IDataProvider<long, ConfigurationRunProperties>
+	public class FakeDataProvider
 	{
-		public IDictionary<long, IEnumerable<ConfigurationRunProperties>> GetData()
+		public IDictionary<int, IEnumerable<ConfigurationRunProperties>> GetData()
 		{
-			return new Dictionary<long, IEnumerable<ConfigurationRunProperties>>();
+			return new Dictionary<int, IEnumerable<ConfigurationRunProperties>>();
 		}
 	}
 }

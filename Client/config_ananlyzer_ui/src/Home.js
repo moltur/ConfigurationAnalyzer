@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from './Api';
+import API from './Helpers/Api';
 import { FormCheckbox, Button, Container, Row, Col  } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
@@ -74,7 +74,9 @@ class Home extends Component {
       if (this.state.isComparisonAllowed)
       {
         return <Button outline squared active>
-       <Link to='/configs-comparison'>
+       <Link to={'/configs-comparison/'+ this.state.configurations.map((value) => {
+         if (value.isChecked) return value.id;
+       }).toString().replace(',','&')}>
          Сравнить
          </Link>
       </Button>

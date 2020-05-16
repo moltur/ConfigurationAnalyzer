@@ -1,4 +1,5 @@
 using ConfigurationAnalyzer.DataAccess;
+using ConfigurationAnalyzer.DataAccess.Models;
 using ConfigurationAnalyzer.Domain.Interfaces;
 using ConfigurationAnalyzer.Domain.Models;
 using ConfigurationAnalyzer.Logic;
@@ -22,13 +23,14 @@ namespace ConfigurationAnalyzer
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
-
-			services.AddSingleton<IDataProvider<long, ConfigurationRunProperties>, FakeDataProvider>();
+			services.AddSingleton<DB_A26EBE_processimContext>();
+			services.AddSingleton<IDataProvider<ConfigurationRunProperties, Configuration>, ConfigurationsProvider>();
 
 			services.AddTransient<IConfigurationsService, ConfigurationsService>();
 			services.AddTransient<IResourcesService, ResourcesService>();
 			services.AddTransient<IProceduresService, ProceduresService>();
+
+			services.AddControllers();
 
 			services.AddCors(options =>
 			{

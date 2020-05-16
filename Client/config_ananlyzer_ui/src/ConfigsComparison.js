@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from './Api';
+import API from './Helpers/Api';
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
@@ -48,8 +48,10 @@ class ConfigsComparison extends Component {
   }
 
   componentDidMount() {
-    this.getConfigFromApi(2).then(config1=> {
-        this.getConfigFromApi(3).then( config2 => {
+    const { ids } = this.props.match.params;
+    var splited = ids.split('&');
+    this.getConfigFromApi(splited[0]).then(config1=> {
+        this.getConfigFromApi(splited[1]).then( config2 => {
             this.setState({config1, config2});
         })
     })

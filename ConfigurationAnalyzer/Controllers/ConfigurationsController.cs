@@ -25,13 +25,13 @@ namespace ConfigurationAnalyzer.Controllers
 		[HttpGet("")]
 		public ActionResult<IEnumerable<Configuration>> GetAll()
 		{
-			return Ok(_configurationsService.GetAllConfigurations());
+			return Ok(_configurationsService.GetAll());
 		}
 
 		[HttpGet("{id}")]
-		public ActionResult<ConfigurationRunPropertiesProcessed> Get(long id)
+		public ActionResult<ConfigurationRunPropertiesProcessed> Get(int id)
 		{
-			return Ok(_configurationsService.GetConfiguration(id));
+			return Ok(_configurationsService.Get(id));
 		}
 	}
 }

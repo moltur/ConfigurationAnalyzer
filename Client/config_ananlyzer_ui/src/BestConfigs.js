@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from './Api';
+import API from './Helpers/Api';
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
@@ -33,7 +33,9 @@ class BestConfigs extends Component {
       }
 
       componentDidMount() {
-        this.getConfigFromApi(2).then(config=> {
+        const { id } = this.props.match.params;
+
+        this.getConfigFromApi(id).then(config=> {
             this.getConfigsFromApi().then(configurations => {
                 this.setState({config, configurations});
               })

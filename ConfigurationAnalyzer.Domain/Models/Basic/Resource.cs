@@ -2,10 +2,10 @@
 {
 	public class Resource
 	{
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public string Name { get; set; }
 
-		public double Cost { get; set; }
+		public decimal Cost { get; set; }
 	}
 }
