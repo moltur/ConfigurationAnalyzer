@@ -1,4 +1,5 @@
-﻿using ConfigurationAnalyzer.Domain.Interfaces;
+﻿using ConfigurationAnalyzer.Api.Models;
+using ConfigurationAnalyzer.Domain.Interfaces;
 using ConfigurationAnalyzer.Domain.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,12 @@ namespace ConfigurationAnalyzer.Controllers
 		public ActionResult<ConfigurationRunPropertiesProcessed> Get(int id)
 		{
 			return Ok(_configurationsService.Get(id));
+		}
+
+		[HttpPost("best")]
+		public ActionResult<IEnumerable<Configuration>> FindBest([FromBody] BestConfigurationRequest request)
+		{
+			return Ok(_configurationsService.GetBest(request.Ids));
 		}
 	}
 }

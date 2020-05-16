@@ -25,7 +25,7 @@ class Main extends Component {
                 <Route path="/contact" component={Contact}/>
                 <Route path="/config-description/:id"  component={ConfigurationInfo}/>
                 <Route path="/configs-comparison/:ids"  component={ConfigsComparison}/>
-                <Route path="/configs-search"  component={BestConfigs}/>
+                <Route path="/best/:ids"  component={BestConfigs}/>
                 {/* <Route component={Error} /> */}
                 </div>
                 </div>

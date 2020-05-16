@@ -3,6 +3,8 @@ using ConfigurationAnalyzer.DataAccess.Models;
 using ConfigurationAnalyzer.Domain.Interfaces;
 using ConfigurationAnalyzer.Domain.Models;
 using ConfigurationAnalyzer.Logic;
+using ConfigurationAnalyzer.Logic.Optimization;
+using ConfigurationAnalyzer.Logic.Optimization.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +31,9 @@ namespace ConfigurationAnalyzer
 			services.AddTransient<IConfigurationsService, ConfigurationsService>();
 			services.AddTransient<IResourcesService, ResourcesService>();
 			services.AddTransient<IProceduresService, ProceduresService>();
+
+			services.AddSingleton<IConverter<ConfigurationRunPropertiesProcessed, Criteria>, ConfigurationRunPropertiesToCriteriaConverter>();
+			services.AddTransient<IBestConfigurationCalculator, TargetCriteriaOptimizer>();
 
 			services.AddControllers();
 

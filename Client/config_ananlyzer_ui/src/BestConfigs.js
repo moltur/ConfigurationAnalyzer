@@ -33,30 +33,31 @@ class BestConfigs extends Component {
       }
 
       componentDidMount() {
-        const { id } = this.props.match.params;
+        const { ids } = this.props.match.params;
+        var numIds = ids.split('&').map( (value) => {
+          return parseInt(value, 10);
+        });
 
-        this.getConfigFromApi(id).then(config=> {
-            this.getConfigsFromApi().then(configurations => {
-                this.setState({config, configurations});
+        this.getBestConfigsFromApi({Ids:numIds}).then(configurations=> {
+            this.getConfigFromApi(configurations[0].id).then(config => {
+                this.setState({configurations, config});
               })
         })
       }
 
       getList(){
-        return this.state.configurations.map((value) => {
+        return this.state.configurations.slise(1).map((value) => {
           var link = '/config-description/' + value.id;
           return <div><Link to={link}>{value.name}</Link></div>
         })
       }
     
-      getConfigsFromApi () {
-        return API.get('configurations/').then(value => value.data.map((value) => {
-          return {id: value.id, name: value.name, isChecked: false}
-        }))
+      getBestConfigsFromApi(request) {
+        return API.post('configurations/best',request).then(value => value.data);
       }
     
       getConfigFromApi (id) {
-        return API.get('configurations/2').then(value => value.data)
+        return API.get('configurations/'+ id).then(value => value.data)
       }
     
       compareResourcesByInUseTime(a, b) {
@@ -85,6 +86,17 @@ class BestConfigs extends Component {
         if (b.duration > a.duration) return 1;
       
         return 0;
+      }
+
+      getAllBestConfigsRow()
+      {
+        if (this.state.configurations.length > 1){
+        return 
+        <Row>
+        <Col>Все оптимальные конфигурации:</Col>
+        <Col>{this.getList()}</Col>
+        </Row>
+        }
       }
     
     
@@ -115,10 +127,7 @@ class BestConfigs extends Component {
             </Col>
             <Col>
             <Container>
-            <Row>
-            <Col>Все оптимальные конфигурации:</Col>
-            <Col>{this.getList()}</Col>
-            </Row>
+            {this.getAllBestConfigsRow()}
             </Container>
             </Col>
             </Row>

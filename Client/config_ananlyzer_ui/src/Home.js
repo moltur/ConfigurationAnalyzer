@@ -92,7 +92,9 @@ class Home extends Component {
       if (this.state.isSearchAllowed)
       {
         return <Button outline squared active>
-       <Link to='/configs-search'>
+       <Link to={'/best/' + this.state.configurations.map((value) => {
+         if (value.isChecked) return value.id;
+       }).toString().replace(',','&')}>
          Выбрать оптимальную
        </Link>
       </Button>

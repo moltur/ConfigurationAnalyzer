@@ -1,5 +1,6 @@
 ﻿using ConfigurationAnalyzer.Domain.Interfaces;
 using ConfigurationAnalyzer.Domain.Models;
+using ConfigurationAnalyzer.Logic.Optimization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,19 @@ namespace ConfigurationAnalyzer.Logic
 	{
 
 		private readonly IDataProvider<ConfigurationRunProperties, Configuration> _provider;
+
 		private readonly IProceduresService _proceduresService;
 		private readonly IResourcesService _resourcesService;
 
-		public ConfigurationsService(IDataProvider<ConfigurationRunProperties, Configuration> provider, IProceduresService proceduresService, IResourcesService resourcesService)
+		private readonly IBestConfigurationCalculator _calculator;
+
+		public ConfigurationsService(IDataProvider<ConfigurationRunProperties, Configuration> provider, IProceduresService proceduresService, IResourcesService resourcesService,
+			IBestConfigurationCalculator calculator)
 		{
 			_provider = provider;
 			_proceduresService = proceduresService;
 			_resourcesService = resourcesService;
+			_calculator = calculator;
 		}
 
 		public IEnumerable<Configuration> GetAll()
@@ -30,9 +36,17 @@ namespace ConfigurationAnalyzer.Logic
 			return CalculateConfigurationProperties(_provider.Get(id));
 		}
 
-		public Tuple<ConfigurationRunPropertiesProcessed, IEnumerable<Configuration>> GetBest(IEnumerable<int> ids)
+		public IEnumerable<ConfigurationRunPropertiesProcessed> Get(IEnumerable<int> ids)
 		{
-			throw new NotImplementedException();
+			return ids.Select(Get).ToList();
+		}
+
+		public IEnumerable<Configuration> GetBest(IEnumerable<int> ids)
+		{
+			var configurations = Get(ids);
+			var bestConfigurations = _calculator.Calculate(configurations);
+
+			return configurations.Where(x => bestConfigurations.Any(y => y == x.Configuration.Id)).Select(x => x.Configuration).ToList();
 		}
 
 		private ConfigurationRunPropertiesProcessed CalculateConfigurationProperties(IEnumerable<ConfigurationRunProperties> runs)
