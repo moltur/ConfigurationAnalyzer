@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConfigurationAnalyzer.Domain.Models.Configuration">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Basic\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigurationAnalyzer.Domain.Models.ConfigurationRunProperties">
+    <Position X="4.5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIQACAAAAAAAAABAAAAAAAAAAgAAAAAAAABA=</HashCode>
+      <FileName>Models\Run\ConfigurationRunProperties.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Configuration" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Procedures" />
+      <Property Name="Resources" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ConfigurationAnalyzer.Domain.Models.ConfigurationRunPropertiesProcessed">
+    <Position X="4.25" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAIAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\Run\ConfigurationRunPropertiesProcessed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigurationAnalyzer.Domain.Models.Procedure">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Basic\Procedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigurationAnalyzer.Domain.Models.ProcedureRunProperties">
+    <Position X="7.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Run\ProcedureRunProperties.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Procedure" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConfigurationAnalyzer.Domain.Models.Resource">
+    <Position X="7.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Basic\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigurationAnalyzer.Domain.Models.ResourceRunProperties">
+    <Position X="7.5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Run\ResourceRunProperties.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Resource" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

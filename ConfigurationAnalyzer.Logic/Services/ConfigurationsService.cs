@@ -60,6 +60,7 @@ namespace ConfigurationAnalyzer.Logic
 				CalculateInefficiency(currentIneff, ref ineffBest, ref ineffWorst, ref ineff);
 			}
 
+			var count = runs.Count();
 			return new ConfigurationRunPropertiesProcessed
 			{
 				Id = 0,
@@ -68,10 +69,10 @@ namespace ConfigurationAnalyzer.Logic
 					Id = runs.First().Configuration.Id,
 					Name = runs.First().Configuration.Name
 				},
-				Duration = duration,
+				Duration = duration/ count,
 				DurationBest = durationBest,
 				DurationWorst = durationWorst,
-				InefficiencyTime = ineff,
+				InefficiencyTime = ineff/ count,
 				InefficiencyTimeBest = ineffBest,
 				InefficiencyTimeWorst = ineffWorst,
 				Cost = runs.First().Cost,

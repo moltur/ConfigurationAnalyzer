@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import API from './Helpers/Api';
-import "./Home.css";
+import API from '../Helpers/Api';
+import "./Styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import { Container, Row, Col } from "shards-react";
-import MidMaxMinBar from './Bars/MidMaxMinBar';
-import SortedBar from './Bars/SortedBar';
+import MidMaxMinBar from '../Bars/MidMaxMinBar';
+import SortedBar from '../Bars/SortedBar';
  
 class ConfigsComparison extends Component { 
   constructor(props) {

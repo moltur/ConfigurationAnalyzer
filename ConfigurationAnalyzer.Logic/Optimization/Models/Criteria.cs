@@ -20,14 +20,14 @@ namespace ConfigurationAnalyzer.Logic.Optimization.Models
 
 		public decimal Cost { get; set; }
 
-		public double GetDistance(Criteria second)
+		public double GetDistance(Criteria other)
 		{
-			return Math.Sqrt(Math.Pow((Duration - second.Duration), 2) 
-				+ Math.Pow((DurationBest - second.DurationBest), 2) 
-				+ Math.Pow((DurationWorst - second.DurationWorst), 2)
-				+ Math.Pow((InefficiencyTime - second.InefficiencyTime), 2) 
-				+ Math.Pow((InefficiencyTimeBest - second.InefficiencyTimeBest), 2) 
-				+ Math.Pow((InefficiencyTimeWorst - second.InefficiencyTimeWorst), 2));
+			return Math.Sqrt(Math.Pow((Duration - other.Duration), 2) 
+				+ Math.Pow((DurationBest - other.DurationBest), 2) 
+				+ Math.Pow((DurationWorst - other.DurationWorst), 2)
+				+ Math.Pow((InefficiencyTime - other.InefficiencyTime), 2) 
+				+ Math.Pow((InefficiencyTimeBest - other.InefficiencyTimeBest), 2) 
+				+ Math.Pow((InefficiencyTimeWorst - other.InefficiencyTimeWorst), 2));
 		}
 	}
 }

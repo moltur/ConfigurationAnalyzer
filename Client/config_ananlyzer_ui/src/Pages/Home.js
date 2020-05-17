@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import API from './Helpers/Api';
+import API from '../Helpers/Api';
 import { FormCheckbox, Button, Container, Row, Col  } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
-import "./Home.css";
+import "./Styles/Home.css";
 import { Route, Link, HashRouter } from "react-router-dom";
  
 class Home extends Component {
@@ -94,7 +94,9 @@ class Home extends Component {
         return <Button outline squared active>
        <Link to={'/best/' + this.state.configurations.map((value) => {
          if (value.isChecked) return value.id;
-       }).toString().replace(',','&')}>
+       }).filter(function (el) {
+        return el != null;
+      }).join('&')}>
          Выбрать оптимальную
        </Link>
       </Button>

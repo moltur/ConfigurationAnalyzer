@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import API from './Helpers/Api';
-import "./Home.css";
+import API from '../Helpers/Api';
+import "./Styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import { FormCheckbox, Container, Row, Col  } from "shards-react";
 import { Route, Link, HashRouter } from "react-router-dom";
-import MidMaxMinBar from './Bars/MidMaxMinBar';
-import SortedBar from './Bars/SortedBar';
+import MidMaxMinBar from '../Bars/MidMaxMinBar';
+import SortedBar from '../Bars/SortedBar';
  
 class BestConfigs extends Component { 
     constructor(props) {
@@ -28,7 +28,8 @@ class BestConfigs extends Component {
             procedures: [],
             resources: []
           },
-          configurations:[]
+          configurations:[],
+          allConfigurations: []
         }
       }
 
@@ -40,17 +41,28 @@ class BestConfigs extends Component {
 
         this.getBestConfigsFromApi({Ids:numIds}).then(configurations=> {
             this.getConfigFromApi(configurations[0].id).then(config => {
-                this.setState({configurations, config});
+              this.getConfigsFromApi().then (allConfigurations => {
+
+              this.setState({configurations, config, allConfigurations})
               })
         })
-      }
+      })
+    }
 
       getList(){
-        return this.state.configurations.slise(1).map((value) => {
+        return this.state.allConfigurations.map((value) => {
           var link = '/config-description/' + value.id;
           return <div><Link to={link}>{value.name}</Link></div>
         })
       }
+
+      getBestConfigsList(){
+        return this.state.configurations.map((value) => {
+          var link = '/config-description/' + value.id;
+          return <div><Link to={link}>{value.name}</Link></div>
+        })
+      }
+    
     
       getBestConfigsFromApi(request) {
         return API.post('configurations/best',request).then(value => value.data);
@@ -58,6 +70,12 @@ class BestConfigs extends Component {
     
       getConfigFromApi (id) {
         return API.get('configurations/'+ id).then(value => value.data)
+      }
+
+      getConfigsFromApi () {
+        return API.get('configurations/').then(value => value.data.map((value) => {
+          return {id: value.id, name: value.name, isChecked: false}
+        }))
       }
     
       compareResourcesByInUseTime(a, b) {
@@ -88,13 +106,12 @@ class BestConfigs extends Component {
         return 0;
       }
 
-      getAllBestConfigsRow()
+      getBestConfigsRow()
       {
-        if (this.state.configurations.length > 1){
-        return 
-        <Row>
+        if (this.state.configurations.length>1) {
+        return <Row>
         <Col>Все оптимальные конфигурации:</Col>
-        <Col>{this.getList()}</Col>
+        <Col>{this.getBestConfigsList()}</Col>
         </Row>
         }
       }
@@ -103,6 +120,13 @@ class BestConfigs extends Component {
       render() {
         return (
           <Container>
+            <Row>
+              <Col><h4>Все рассмотренные конфигурации:</h4></Col>
+              <Col>{this.getList()}</Col>
+              </Row>
+              <Row>
+                <Col> .</Col>
+              </Row>
             <Row>
             <Col>
             <h4>Оптимальная конфигурация: {this.state.config.configuration.name}</h4>
@@ -127,7 +151,7 @@ class BestConfigs extends Component {
             </Col>
             <Col>
             <Container>
-            {this.getAllBestConfigsRow()}
+            {this.getBestConfigsRow()}
             </Container>
             </Col>
             </Row>

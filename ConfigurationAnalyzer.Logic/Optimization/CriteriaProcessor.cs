@@ -7,7 +7,7 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 	public class CriteriaProcessor : ICriteriaProcessor
 	{
 		private const double eps = 0.001;
-		public IEnumerable<Criteria> Normalize(IEnumerable<Criteria> criterias)
+		public IEnumerable<Criteria> Normalize(IEnumerable<Criteria> items)
 		{
 			var minValues = new Criteria
 			{
@@ -31,11 +31,11 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 				Cost = 0
 			};
 
-			FindMinAndMaxValues(criterias, minValues, maxValues);
+			FindMinAndMaxValues(items, minValues, maxValues);
 
 			var result = new List<Criteria>();
 
-			foreach (var criteria in criterias)
+			foreach (var criteria in items)
 			{
 				result.Add(new Criteria
 				{
@@ -53,7 +53,7 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 			return result;
 		}
 
-		public Criteria FindMinValuesPerCriteria(IEnumerable<Criteria> criterias)
+		public Criteria FindMinValuesPerCriteria(IEnumerable<Criteria> items)
 		{
 			var minValues = new Criteria
 			{
@@ -77,13 +77,13 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 				Cost = 0
 			};
 
-			FindMinAndMaxValues(criterias, minValues, maxValues);
+			FindMinAndMaxValues(items, minValues, maxValues);
 			return minValues;
 		}
 
-		private void FindMinAndMaxValues(IEnumerable<Criteria> criterias, Criteria min, Criteria max)
+		private void FindMinAndMaxValues(IEnumerable<Criteria> items, Criteria min, Criteria max)
 		{
-			foreach (var criteria in criterias)
+			foreach (var criteria in items)
 			{
 				if (criteria.Duration < min.Duration)
 				{
