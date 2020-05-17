@@ -29,21 +29,22 @@ class BestConfigs extends Component {
             resources: []
           },
           configurations:[],
-          allConfigurations: []
+          allConfigurations: [],
+          allIds:[]
         }
       }
 
       componentDidMount() {
         const { ids } = this.props.match.params;
-        var numIds = ids.split('&').map( (value) => {
+        var allIds = ids.split('&').map( (value) => {
           return parseInt(value, 10);
         });
 
-        this.getBestConfigsFromApi({Ids:numIds}).then(configurations=> {
+        this.getBestConfigsFromApi({Ids:allIds}).then(configurations=> {
             this.getConfigFromApi(configurations[0].id).then(config => {
               this.getConfigsFromApi().then (allConfigurations => {
 
-              this.setState({configurations, config, allConfigurations})
+              this.setState({configurations, config, allConfigurations, allIds})
               })
         })
       })
@@ -51,8 +52,10 @@ class BestConfigs extends Component {
 
       getList(){
         return this.state.allConfigurations.map((value) => {
+          if (this.state.allIds.includes(value.id)){
           var link = '/config-description/' + value.id;
           return <div><Link to={link}>{value.name}</Link></div>
+          }
         })
       }
 

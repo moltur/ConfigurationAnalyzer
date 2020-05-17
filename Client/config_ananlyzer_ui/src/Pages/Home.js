@@ -76,7 +76,9 @@ class Home extends Component {
         return <Button outline squared active>
        <Link to={'/configs-comparison/'+ this.state.configurations.map((value) => {
          if (value.isChecked) return value.id;
-       }).toString().replace(',','&')}>
+       }).filter(function (el) {
+        return el != null;
+      }).join('&')}>
          Сравнить
          </Link>
       </Button>
@@ -114,7 +116,7 @@ class Home extends Component {
       <Container>
         <Row>
           <Col>
-        <h4>Доступные конфигурации:</h4>
+        <h4>Доступные конфигурации САПР:</h4>
         </Col>
         <Col></Col>
         <Col></Col>
