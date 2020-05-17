@@ -34,7 +34,7 @@ namespace ConfigurationAnalyzer
 			services.AddTransient<IProceduresService, ProceduresService>();
 
 			services.AddSingleton<IConverter<ConfigurationRunPropertiesProcessed, Criteria>, ConfigurationRunPropertiesToCriteriaConverter>();
-			services.AddSingleton<ICriteriaNormalizer, CriteriaNormalizer>();
+			services.AddSingleton<ICriteriaProcessor, CriteriaProcessor>();
 			services.AddTransient<IBestConfigurationCalculator, TargetCriteriaOptimizer>();
 
 			services.AddControllers();
