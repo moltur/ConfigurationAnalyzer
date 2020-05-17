@@ -12,11 +12,7 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 
 		private IList<double> CurrentBest { get; set; }
 
-		private IList<double> NewBest { get; set; }
-
 		private readonly IConverter<ConfigurationRunPropertiesProcessed, Criteria> _converter;
-
-		private readonly ICriteriaProcessor _criteriaProcessor;
 
 		public IEnumerable<int> Calculate(IEnumerable<ConfigurationRunPropertiesProcessed> items)
 		{
@@ -37,7 +33,7 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 		private void Step(IEnumerable<IList<double>> items, int stepNum)
 		{
 			var currentBestValue = items.First()[stepNum];
-			NewBest = CurrentBest;
+			var newBest = CurrentBest;
 			foreach (var item in items)
 			{
 				if (item[stepNum] < currentBestValue)
@@ -50,11 +46,11 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 					if (i < 0)
 					{
 						currentBestValue = item[stepNum];
-						NewBest = item;
+						newBest = item;
 					}
 				}
 			}
-			CurrentBest = NewBest;
+			CurrentBest = newBest;
 		}
 
 		private bool CheckItem(IList<double> item, int i)

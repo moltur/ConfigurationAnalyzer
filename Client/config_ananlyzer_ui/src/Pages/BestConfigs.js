@@ -30,7 +30,8 @@ class BestConfigs extends Component {
           },
           configurations:[],
           allConfigurations: [],
-          allIds:[]
+          allIds:[],
+          method: 0
         }
       }
 
@@ -45,7 +46,7 @@ class BestConfigs extends Component {
             this.getConfigFromApi(configurations[0].id).then(config => {
               this.getConfigsFromApi().then (allConfigurations => {
 
-              this.setState({configurations, config, allConfigurations, allIds})
+              this.setState({configurations, config, allConfigurations, allIds, method})
               })
         })
       })
@@ -119,21 +120,37 @@ class BestConfigs extends Component {
         </Row>
         }
       }
+
+      getMethodName(){
+        if (this.state.method===0)
+        return 'Метод целевого программирования'
+        else 
+        return 'Метод последовательных уступок'
+        
+      }
     
     
       render() {
         return (
           <Container>
             <Row>
-              <Col><h4>Все рассмотренные конфигурации:</h4></Col>
+              <Col>
+                <h5>Все рассмотренные конфигурации:</h5>
+              </Col>
               <Col>{this.getList()}</Col>
               </Row>
               <Row>
-                <Col> .</Col>
+                <Col>
+                <h5>Метод:</h5>
+                </Col>
+                <Col><h5>{this.getMethodName()} </h5></Col>
               </Row>
             <Row>
             <Col>
-            <h4>Оптимальная конфигурация: {this.state.config.configuration.name}</h4>
+            <h5>Оптимальная конфигурация:</h5>
+            </Col>
+            <Col>
+            <h5>{this.state.config.configuration.name}</h5>
             </Col>
             </Row>
             <Row>

@@ -1,4 +1,4 @@
-h1, h2, h3, h4, p, ul, li, p {
+h1, h2, h3, h4, h5, p, ul, li, p, a {
     font-family: sans-serif;
   }
 
@@ -8,4 +8,7 @@ h1, h2, h3, h4, p, ul, li, p {
 
 .btn-outline-primary:not(:disabled):not(.disabled).active{
   background-color: transparent;
+}
+.h5 {
+  margin-bottom: 12px;
 }
