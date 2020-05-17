@@ -1,7 +1,6 @@
 ﻿using ConfigurationAnalyzer.Domain.Interfaces;
 using ConfigurationAnalyzer.Domain.Models;
-using ConfigurationAnalyzer.Logic.Optimization;
-using System;
+using ConfigurationAnalyzer.Logic.Optimization.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 

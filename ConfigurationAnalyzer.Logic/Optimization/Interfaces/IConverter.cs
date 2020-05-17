@@ -1,4 +1,4 @@
-﻿namespace ConfigurationAnalyzer.Logic.Optimization
+﻿namespace ConfigurationAnalyzer.Logic.Optimization.Interfaces
 {
 	public interface IConverter<TIn, TOut>
 	{

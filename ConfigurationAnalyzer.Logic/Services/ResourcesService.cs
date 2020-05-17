@@ -46,7 +46,8 @@ namespace ConfigurationAnalyzer.Logic
 				Resource = new Resource
 				{
 					Id = resource.Resource.Id,
-					Name = resource.Resource.Name
+					Name = resource.Resource.Name,
+					Cost = resource.Resource.Cost
 				},
 				InUseTime = resource.InUseTime / resourcesCount,
 				InefficiencyTime = resource.InefficiencyTime / resourcesCount

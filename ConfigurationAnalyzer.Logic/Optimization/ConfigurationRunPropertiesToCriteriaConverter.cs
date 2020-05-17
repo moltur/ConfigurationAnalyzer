@@ -1,5 +1,6 @@
 ﻿using ConfigurationAnalyzer.Domain.Models;
-using ConfigurationAnalyzer.Logic.Optimization.Model;
+using ConfigurationAnalyzer.Logic.Optimization.Interfaces;
+using ConfigurationAnalyzer.Logic.Optimization.Models;
 
 namespace ConfigurationAnalyzer.Logic.Optimization
 {

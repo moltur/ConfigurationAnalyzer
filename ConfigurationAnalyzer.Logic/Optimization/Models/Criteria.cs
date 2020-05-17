@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConfigurationAnalyzer.Logic.Optimization.Model
+namespace ConfigurationAnalyzer.Logic.Optimization.Models
 {
 	public class Criteria
 	{

@@ -4,7 +4,8 @@ using ConfigurationAnalyzer.Domain.Interfaces;
 using ConfigurationAnalyzer.Domain.Models;
 using ConfigurationAnalyzer.Logic;
 using ConfigurationAnalyzer.Logic.Optimization;
-using ConfigurationAnalyzer.Logic.Optimization.Model;
+using ConfigurationAnalyzer.Logic.Optimization.Interfaces;
+using ConfigurationAnalyzer.Logic.Optimization.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +34,7 @@ namespace ConfigurationAnalyzer
 			services.AddTransient<IProceduresService, ProceduresService>();
 
 			services.AddSingleton<IConverter<ConfigurationRunPropertiesProcessed, Criteria>, ConfigurationRunPropertiesToCriteriaConverter>();
+			services.AddSingleton<ICriteriaNormalizer, CriteriaNormalizer>();
 			services.AddTransient<IBestConfigurationCalculator, TargetCriteriaOptimizer>();
 
 			services.AddControllers();
