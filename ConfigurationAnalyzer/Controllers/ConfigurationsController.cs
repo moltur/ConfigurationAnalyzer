@@ -38,7 +38,7 @@ namespace ConfigurationAnalyzer.Controllers
 		[HttpPost("best")]
 		public ActionResult<IEnumerable<Configuration>> FindBest([FromBody] BestConfigurationRequest request)
 		{
-			return Ok(_configurationsService.GetBest(request.Ids));
+			return Ok(_configurationsService.GetBest(request.Ids, request.Method));
 		}
 	}
 }

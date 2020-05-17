@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ConfigurationAnalyzer.Logic.Optimization
 {
-	public class TargetCriteriaOptimizer : IBestConfigurationCalculator
+	public class TargetCriteriaOptimizer: ITargetCriteriaOptimizer
 	{
 		private Criteria TargetCriteria { get; set; } 
 
@@ -49,5 +49,10 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 			return results;
 		}
 
+	}
+
+	public interface ITargetCriteriaOptimizer
+	{
+		IEnumerable<int> Calculate(IEnumerable<ConfigurationRunPropertiesProcessed> items);
 	}
 }

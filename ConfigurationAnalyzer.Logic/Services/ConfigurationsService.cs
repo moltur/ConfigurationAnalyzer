@@ -40,10 +40,10 @@ namespace ConfigurationAnalyzer.Logic
 			return ids.Select(Get).ToList();
 		}
 
-		public IEnumerable<Configuration> GetBest(IEnumerable<int> ids)
+		public IEnumerable<Configuration> GetBest(IEnumerable<int> ids, int method)
 		{
 			var configurations = Get(ids);
-			var bestConfigurations = _calculator.Calculate(configurations);
+			var bestConfigurations = _calculator.Calculate(configurations, method);
 
 			return configurations.Where(x => bestConfigurations.Any(y => y == x.Configuration.Id)).Select(x => x.Configuration).ToList();
 		}

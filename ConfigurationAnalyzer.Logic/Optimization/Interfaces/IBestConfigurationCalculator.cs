@@ -5,6 +5,6 @@ namespace ConfigurationAnalyzer.Logic.Optimization.Interfaces
 {
 	public interface IBestConfigurationCalculator
 	{
-		IEnumerable<int> Calculate(IEnumerable<ConfigurationRunPropertiesProcessed> items);
+		IEnumerable<int> Calculate(IEnumerable<ConfigurationRunPropertiesProcessed> items, int method);
 	}
 }

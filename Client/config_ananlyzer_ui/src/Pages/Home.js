@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from '../Helpers/Api';
-import { FormCheckbox, Button, Container, Row, Col  } from "shards-react";
+import { FormCheckbox, Button, Container, Row, Col, ButtonGroup } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import "./Styles/Home.css";
@@ -73,7 +73,7 @@ class Home extends Component {
   getComparisonButton(){
       if (this.state.isComparisonAllowed)
       {
-        return <Button outline squared active>
+        return <Button outline squared active block>
        <Link to={'/configs-comparison/'+ this.state.configurations.map((value) => {
          if (value.isChecked) return value.id;
        }).filter(function (el) {
@@ -84,31 +84,51 @@ class Home extends Component {
       </Button>
       }
       else{
-        return <Button outline squared disabled>
+        return <Button outline squared disabled block>
           Сравнить
        </Button>
       } 
   }
 
-  getSearchButton(){
+  getSearchButton1(){
       if (this.state.isSearchAllowed)
       {
-        return <Button outline squared active>
+        return <Button outline squared active block>
        <Link to={'/best/' + this.state.configurations.map((value) => {
          if (value.isChecked) return value.id;
        }).filter(function (el) {
         return el != null;
-      }).join('&')}>
-         Выбрать оптимальную
+      }).join('&') + '&0'}>
+         Метод целевого программирования
        </Link>
       </Button>
       }
       else{
-        return <Button outline squared disabled>
-          Выбрать оптимальную
+        return <Button outline squared disabled block>
+          Метод целевого программирования
        </Button>
       } 
   }
+
+  getSearchButton2(){
+    if (this.state.isSearchAllowed)
+    {
+      return <Button outline squared active block>
+    <Link to={'/best/' + this.state.configurations.map((value) => {
+      if (value.isChecked) return value.id;
+    }).filter(function (el) {
+     return el != null;
+   }).join('&') + '&1'}>
+      Метод последовательных уступок
+    </Link>
+   </Button>
+    }
+    else{
+      return <Button outline squared disabled block>
+      Метод последовательных уступок
+  </Button>
+    } 
+}
 
 
   render() {
@@ -126,14 +146,18 @@ class Home extends Component {
         {this.getList()}
         </Col>
         <Col></Col>
-        <Col></Col>
+        <Col>
+        </Col>
         </Row>
         <Row>
-        <Col></Col>
-        <Col></Col>
-        <Col>
+          <Col></Col>
+          <Col></Col>
+          <Col>        
+          <ButtonGroup>
         {this.getComparisonButton()}
-        {this.getSearchButton()}
+        {this.getSearchButton1()}
+        {this.getSearchButton2()}
+        </ButtonGroup>
         </Col>
         </Row>
       </Container>

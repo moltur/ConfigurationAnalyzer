@@ -39,6 +39,7 @@ class BestConfigs extends Component {
         var allIds = ids.split('&').map( (value) => {
           return parseInt(value, 10);
         });
+        var method = allIds.pop();
 
         this.getBestConfigsFromApi({Ids:allIds}).then(configurations=> {
             this.getConfigFromApi(configurations[0].id).then(config => {

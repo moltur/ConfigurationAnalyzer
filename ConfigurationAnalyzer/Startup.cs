@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace ConfigurationAnalyzer
 {
@@ -35,7 +37,9 @@ namespace ConfigurationAnalyzer
 
 			services.AddSingleton<IConverter<ConfigurationRunPropertiesProcessed, Criteria>, ConfigurationRunPropertiesToCriteriaConverter>();
 			services.AddSingleton<ICriteriaProcessor, CriteriaProcessor>();
-			services.AddTransient<IBestConfigurationCalculator, TargetCriteriaOptimizer>();
+			services.AddTransient<IConcessionOptimizer, ConcessionOptimizer>();
+			services.AddTransient<ITargetCriteriaOptimizer, TargetCriteriaOptimizer>();
+			services.AddTransient<IBestConfigurationCalculator, BestConfigurationCalculator>();
 
 			services.AddControllers();
 

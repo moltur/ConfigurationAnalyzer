@@ -10,6 +10,6 @@ namespace ConfigurationAnalyzer.Domain.Interfaces
 
 		ConfigurationRunPropertiesProcessed Get(int id);
 
-		IEnumerable<Configuration> GetBest(IEnumerable<int> ids);
+		IEnumerable<Configuration> GetBest(IEnumerable<int> ids, int method);
 	}
 }
