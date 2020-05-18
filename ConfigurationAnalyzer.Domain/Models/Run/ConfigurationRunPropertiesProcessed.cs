@@ -2,14 +2,12 @@
 {
 	public class ConfigurationRunPropertiesProcessed: ConfigurationRunProperties
 	{
-		public int DurationBest { get; set; }
+		public double DurationBest { get; set; }
 
-		public int DurationWorst { get; set; }
+		public double DurationWorst { get; set; }
 
-		public int InefficiencyTimeBest { get; set; }
+		public double InefficiencyTimeBest { get; set; }
 
-		public int InefficiencyTimeWorst { get; set; }
-
-
+		public double InefficiencyTimeWorst { get; set; }
 	}
 }

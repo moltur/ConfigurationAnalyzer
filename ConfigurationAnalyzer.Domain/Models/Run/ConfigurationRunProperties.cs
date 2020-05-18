@@ -8,11 +8,11 @@ namespace ConfigurationAnalyzer.Domain.Models
 
 		public Configuration Configuration { get; set; }
 
-		public int Duration { get; set; }
+		public double Duration { get; set; }
 
 		public decimal Cost { get; set; }
 
-		public int InefficiencyTime { get; set; }
+		public double InefficiencyTime { get; set; }
 
 		public IEnumerable<ProcedureRunProperties> Procedures { get; set; }
 

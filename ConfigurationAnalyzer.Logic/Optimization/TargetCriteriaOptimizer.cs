@@ -43,6 +43,7 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 					{
 						criteria.ConfigurationId
 					};
+					bestDistance = distance;
 				}
 			}
 

@@ -11,12 +11,12 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 		{
 			var minValues = new Criteria
 			{
-				Duration = int.MaxValue,
-				DurationBest = int.MaxValue,
-				DurationWorst = int.MaxValue,
-				InefficiencyTime = int.MaxValue,
-				InefficiencyTimeBest = int.MaxValue,
-				InefficiencyTimeWorst = int.MaxValue,
+				Duration = double.MaxValue,
+				DurationBest = double.MaxValue,
+				DurationWorst = double.MaxValue,
+				InefficiencyTime = double.MaxValue,
+				InefficiencyTimeBest = double.MaxValue,
+				InefficiencyTimeWorst = double.MaxValue,
 				Cost = decimal.MaxValue
 			};
 
@@ -40,13 +40,13 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 				result.Add(new Criteria
 				{
 					ConfigurationId = criteria.ConfigurationId,
-					Duration = (maxValues.Duration - minValues.Duration) < eps ? criteria.Duration : ((maxValues.Duration - criteria.Duration) / (maxValues.Duration - minValues.Duration)),
-					DurationBest = (maxValues.DurationBest - minValues.DurationBest) < eps ? criteria.DurationBest : ((maxValues.DurationBest - criteria.DurationBest) / (maxValues.DurationBest - minValues.DurationBest)),
-					DurationWorst = (maxValues.DurationWorst - minValues.DurationWorst) < eps ? criteria.DurationWorst : ((maxValues.DurationWorst - criteria.DurationWorst) / (maxValues.DurationWorst - minValues.DurationWorst)),
-					InefficiencyTime = (maxValues.InefficiencyTime - minValues.InefficiencyTime) < eps ? criteria.InefficiencyTime : ((maxValues.InefficiencyTime - criteria.InefficiencyTime) / (maxValues.InefficiencyTime - minValues.InefficiencyTime)),
-					InefficiencyTimeBest = (maxValues.InefficiencyTimeBest - minValues.InefficiencyTimeBest) < eps ? criteria.InefficiencyTimeBest : ((maxValues.InefficiencyTimeBest - criteria.InefficiencyTimeBest) / (maxValues.InefficiencyTimeBest - minValues.InefficiencyTimeBest)),
-					InefficiencyTimeWorst = (maxValues.InefficiencyTimeWorst - minValues.InefficiencyTimeWorst) < eps ? criteria.InefficiencyTimeWorst : ((maxValues.InefficiencyTimeWorst - criteria.InefficiencyTimeWorst) / (maxValues.InefficiencyTimeWorst - minValues.InefficiencyTimeWorst)),
-					Cost = (maxValues.Cost - minValues.Cost) < (decimal)eps ? criteria.Cost : ((maxValues.Cost - criteria.Cost) / (maxValues.Cost - minValues.Cost)),
+					Duration = (maxValues.Duration - minValues.Duration) < eps ? criteria.Duration : ((criteria.Duration - minValues.Duration) / (maxValues.Duration - minValues.Duration)),
+					DurationBest = (maxValues.DurationBest - minValues.DurationBest) < eps ? criteria.DurationBest : ((criteria.DurationBest - minValues.DurationBest) / (maxValues.DurationBest - minValues.DurationBest)),
+					DurationWorst = (maxValues.DurationWorst - minValues.DurationWorst) < eps ? criteria.DurationWorst : ((criteria.DurationWorst - minValues.DurationWorst) / (maxValues.DurationWorst - minValues.DurationWorst)),
+					InefficiencyTime = (maxValues.InefficiencyTime - minValues.InefficiencyTime) < eps ? criteria.InefficiencyTime : ((criteria.InefficiencyTime - minValues.InefficiencyTime) / (maxValues.InefficiencyTime - minValues.InefficiencyTime)),
+					InefficiencyTimeBest = (maxValues.InefficiencyTimeBest - minValues.InefficiencyTimeBest) < eps ? criteria.InefficiencyTimeBest : ((criteria.InefficiencyTimeBest - minValues.InefficiencyTimeBest) / (maxValues.InefficiencyTimeBest - minValues.InefficiencyTimeBest)),
+					InefficiencyTimeWorst = (maxValues.InefficiencyTimeWorst - minValues.InefficiencyTimeWorst) < eps ? criteria.InefficiencyTimeWorst : ((criteria.InefficiencyTimeWorst - minValues.InefficiencyTimeWorst) / (maxValues.InefficiencyTimeWorst - minValues.InefficiencyTimeWorst)),
+					Cost = (maxValues.Cost - minValues.Cost) < (decimal)eps ? criteria.Cost : ((criteria.Cost - minValues.Cost) / (maxValues.Cost - minValues.Cost)),
 				});
 			}
 

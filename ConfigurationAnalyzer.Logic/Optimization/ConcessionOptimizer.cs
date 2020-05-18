@@ -14,11 +14,18 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 
 		private readonly IConverter<ConfigurationRunPropertiesProcessed, Criteria> _converter;
 
+		public ConcessionOptimizer(IConverter<ConfigurationRunPropertiesProcessed, Criteria> converter)
+		{
+			_converter = converter;
+		}
+
 		public IEnumerable<int> Calculate(IEnumerable<ConfigurationRunPropertiesProcessed> items)
 		{
 			var criteriaArr = items.Select(_converter.Convert).Select(SetOrder);
 			Concessions = CalculateConcessions(criteriaArr);
 
+
+			CurrentBest = criteriaArr.First();
 			for (var i = 0; i < criteriaArr.Count(); i++)
 			{
 				Step(criteriaArr, i);
@@ -32,7 +39,7 @@ namespace ConfigurationAnalyzer.Logic.Optimization
 
 		private void Step(IEnumerable<IList<double>> items, int stepNum)
 		{
-			var currentBestValue = items.First()[stepNum];
+			var currentBestValue = CurrentBest[stepNum];
 			var newBest = CurrentBest;
 			foreach (var item in items)
 			{

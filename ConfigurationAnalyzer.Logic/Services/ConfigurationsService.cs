@@ -50,7 +50,7 @@ namespace ConfigurationAnalyzer.Logic
 
 		private ConfigurationRunPropertiesProcessed CalculateConfigurationProperties(IEnumerable<ConfigurationRunProperties> runs)
 		{
-			int durationBest = int.MaxValue, durationWorst = 0, duration = 0, ineffBest = int.MaxValue, ineffWorst = 0, ineff = 0;
+			double durationBest = double.MaxValue, durationWorst = 0, duration = 0, ineffBest = double.MaxValue, ineffWorst = 0, ineff = 0;
 			foreach (var run in runs)
 			{
 				var currentDuration = run.Duration;
@@ -81,7 +81,7 @@ namespace ConfigurationAnalyzer.Logic
 			};
 		}
 
-		private void CalculateDurations(int currentDuration, ref int durationBest, ref int durationWorst, ref int duration)
+		private void CalculateDurations(double currentDuration, ref double durationBest, ref double durationWorst, ref double duration)
 		{
 			if (currentDuration < durationBest)
 			{
@@ -95,7 +95,7 @@ namespace ConfigurationAnalyzer.Logic
 			duration += currentDuration;
 		}
 
-		private void CalculateInefficiency(int currentIneff, ref int ineffBest, ref int ineffWorst, ref int ineff)
+		private void CalculateInefficiency(double currentIneff, ref double ineffBest, ref double ineffWorst, ref double ineff)
 		{
 			if (currentIneff < ineffBest)
 			{

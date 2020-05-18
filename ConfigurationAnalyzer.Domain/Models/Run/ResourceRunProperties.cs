@@ -4,8 +4,8 @@
 	{
 		public Resource Resource { get; set; }
 
-		public int InUseTime { get; set; }
+		public double InUseTime { get; set; }
 
-		public int InefficiencyTime { get; set; }
+		public double InefficiencyTime { get; set; }
 	}
 }

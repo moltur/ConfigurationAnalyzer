@@ -42,7 +42,7 @@ class BestConfigs extends Component {
         });
         var method = allIds.pop();
 
-        this.getBestConfigsFromApi({Ids:allIds}).then(configurations=> {
+        this.getBestConfigsFromApi({Ids:allIds, method: method}).then(configurations=> {
             this.getConfigFromApi(configurations[0].id).then(config => {
               this.getConfigsFromApi().then (allConfigurations => {
 

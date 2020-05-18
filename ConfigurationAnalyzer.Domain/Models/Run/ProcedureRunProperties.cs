@@ -4,8 +4,8 @@
 	{
 		public Procedure Procedure { get; set; }
 
-		public int Duration { get; set; }
+		public double Duration { get; set; }
 
-		public int InefficiencyTime { get; set; }
+		public double InefficiencyTime { get; set; }
 	}
 }
