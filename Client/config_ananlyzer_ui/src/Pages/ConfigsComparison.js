@@ -105,11 +105,11 @@ class ConfigsComparison extends Component {
           <Col>
         <Container>
         <Row>
-          <Col>{'Среднее время выполнения проектирования'}</Col>
+          <Col>{'Средняя длительность выполнения проектирования'}</Col>
           <Col>{this.state.config1.duration} </Col>
         </Row>
         <Row>
-        <Col>{'Среднее неэффективно использованное время'}</Col>
+        <Col>{'Среднее суммарное время нахождения в очереди'}</Col>
           <Col>{this.state.config1.inefficiencyTime} </Col>
         </Row>
         <Row>
@@ -121,11 +121,11 @@ class ConfigsComparison extends Component {
         <Col>
         <Container>
         <Row>
-          <Col>{'Среднее время выполнения проектирования'}</Col>
+          <Col>{'Средняя длительность выполнения проектирования'}</Col>
           <Col>{this.state.config2.duration} </Col>
         </Row>
         <Row>
-        <Col>{'Среднее неэффективно использованное время'}</Col>
+        <Col>{'Среднее суммарное время нахождения в очереди'}</Col>
           <Col>{this.state.config2.inefficiencyTime} </Col>
         </Row>
         <Row>
@@ -139,13 +139,13 @@ class ConfigsComparison extends Component {
           <Col>
         <MidMaxMinBar 
             data = {[ this.state.config1.durationWorst, this.state.config1.duration, this.state.config1.durationBest]}
-            title = 'Время выполнения проектирования'
+            title = 'Длительность выполнения проектирования'
         />
         </Col>
         <Col>
         <MidMaxMinBar 
             data = {[ this.state.config2.durationWorst, this.state.config2.duration, this.state.config2.durationBest]}
-            title = 'Время выполнения проектирования'
+            title = 'Длительность выполнения проектирования'
         />
         </Col>
         </Row>
@@ -153,13 +153,13 @@ class ConfigsComparison extends Component {
         <Col>
         <MidMaxMinBar 
             data = {[this.state.config1.inefficiencyTimeWorst, this.state.config1.inefficiencyTime, this.state.config1.inefficiencyTimeBest]}
-            title = 'Неэффективно использованное время'
+            title = 'Суммарное время нахождения в очереди'
         />
         </Col>
         <Col>
         <MidMaxMinBar 
             data = {[this.state.config2.inefficiencyTimeWorst, this.state.config2.inefficiencyTime, this.state.config2.inefficiencyTimeBest]}
-            title = 'Неэффективно использованное время'
+            title = 'Суммарное время нахождения в очереди'
         />
         </Col>
         </Row>

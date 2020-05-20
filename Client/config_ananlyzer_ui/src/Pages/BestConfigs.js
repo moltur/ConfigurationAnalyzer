@@ -157,11 +157,11 @@ class BestConfigs extends Component {
               <Col>
             <Container>
             <Row>
-              <Col>{'Среднее время выполнения проектирования'}</Col>
+              <Col>{'Средняя длительность выполнения проектирования'}</Col>
               <Col>{this.state.config.duration} </Col>
             </Row>
             <Row>
-            <Col>{'Среднее неэффективно использованное время'}</Col>
+            <Col>{'Среднее суммарное время нахождения в очереди'}</Col>
               <Col>{this.state.config.inefficiencyTime} </Col>
             </Row>
             <Row>
@@ -180,13 +180,13 @@ class BestConfigs extends Component {
               <Col>
             <MidMaxMinBar 
                 data = {[ this.state.config.durationWorst, this.state.config.duration, this.state.config.durationBest]}
-                title = 'Время выполнения проектирования'
+                title = 'Длительность выполнения проектирования'
             />
             </Col>
             <Col>
             <MidMaxMinBar 
                 data = {[this.state.config.inefficiencyTimeWorst, this.state.config.inefficiencyTime, this.state.config.inefficiencyTimeBest]}
-                title = 'Неэффективно использованное время'
+                title = 'Суммарное время нахождения в очереди'
             />
             </Col>
             </Row>
