@@ -7,7 +7,6 @@ namespace ConfigurationAnalyzer.DataAccess.Models
     {
         public Resource()
         {
-            ResourceParameterValue = new HashSet<ResourceParameterValue>();
         }
 
         public int ResourceId { get; set; }
@@ -16,8 +15,6 @@ namespace ConfigurationAnalyzer.DataAccess.Models
         public int? ResourceCategoryId { get; set; }
         public decimal Price { get; set; }
 
-        public virtual ResourceCategory ResourceCategory { get; set; }
         public virtual ResourceType ResourceType { get; set; }
-        public virtual ICollection<ResourceParameterValue> ResourceParameterValue { get; set; }
     }
 }

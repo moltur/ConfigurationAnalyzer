@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ConfigurationAnalyzer.DataAccess.Models
+﻿namespace ConfigurationAnalyzer.DataAccess.Models
 {
     public partial class ProcedureHistory
     {
         public ProcedureHistory()
         {
-            RandomEventHistory = new HashSet<RandomEventHistory>();
         }
 
         public int ProcedureHistoryId { get; set; }
@@ -19,6 +15,5 @@ namespace ConfigurationAnalyzer.DataAccess.Models
         public string ProcedureAlias { get; set; }
 
         public virtual SimulationHistory SimulationHistory { get; set; }
-        public virtual ICollection<RandomEventHistory> RandomEventHistory { get; set; }
     }
 }

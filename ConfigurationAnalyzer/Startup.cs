@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
 using System.IO;
 
 namespace ConfigurationAnalyzer
@@ -68,6 +69,9 @@ namespace ConfigurationAnalyzer
 			app.UseCors("AllowEverything");
 
 			app.UseAuthorization();
+
+			app.UseDefaultFiles();
+			app.UseStaticFiles();
 
 			app.UseEndpoints(endpoints =>
 			{
